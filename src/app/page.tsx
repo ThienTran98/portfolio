@@ -1,12 +1,15 @@
 "use client";
 import { dataAbout } from "@/ConfigData/About/data";
 import { dataNavBar } from "@/ConfigData/NavBar/data";
+import { dataProject } from "@/ConfigData/Project/data";
 import { Button } from "@mantine/core";
 import { IconDownload } from "@tabler/icons-react";
 import Image from "next/image";
 import { AiFillFacebook, AiFillTwitterSquare } from "react-icons/ai";
 import { CgInstagram } from "react-icons/cg";
 import Typewriter from "typewriter-effect";
+import { dataEducation } from "./../ConfigData/Education/Education";
+import { Experience } from "@/ConfigData/Experience/Experience";
 
 export default function Home() {
   const handleDownloadFile = () => {
@@ -50,7 +53,7 @@ export default function Home() {
               <Typewriter
                 onInit={(typewriter) => {
                   typewriter
-                    .typeString("I'm Tran Huu Thien")
+                    .typeString("I'm Tran Thi Phuong Thao")
                     .callFunction(() => {})
                     .pauseFor(2500)
                     .deleteAll(100)
@@ -82,7 +85,7 @@ export default function Home() {
           </div>
           <div className="w-1/2 ">
             <Image
-              src="/img/1-1626437591.jpg"
+              src="/img/pt.jpg"
               alt="avatar"
               width={360}
               height={400}
@@ -93,12 +96,12 @@ export default function Home() {
       </div>
       {/* About */}
       <div className="py-5 flex item-center justify-center bg-gray-200">
-        <div className="text-center bg-[#efebfc] min-w-[600px] rounded-xl shadow-lg ease-out duration-300 hover:translate-y-[-10px] hover:cursor-pointer">
-          <h2 className="text-4xl text-red-500 pt-5 font-bold">About Me</h2>
+        <div className="text-center bg-[#efebfc] min-w-[600px] rounded-xl shadow-lg ">
+          <h2 className="text-4xl text-gray-500 pt-5 font-bold">About Me</h2>
           <div className=" flex items-center py-10 px-4">
             <div className="w-1/2">
               <Image
-                src="/img/1-1626437591.jpg"
+                src="/img/pt.jpg"
                 alt="avatar"
                 width={360}
                 height={400}
@@ -135,22 +138,143 @@ export default function Home() {
         </div>
       </div>
       {/* Education & Experience */}
-      <div className="bg-gray-400">
+      <div className="bg-slate-300 py-10">
         <h2 className="text-center py-5 font-bold text-gray-500 text-4xl mb-8">
           Education & Experience
         </h2>
-        <div className="w-[360px] bg-white shadow-lg px-4 rounded-md">
-          <h2>Hello</h2>
+        <div className="flex items-center justify-center border-b border-slate-500 border-solid pb-10 px-20">
+          {dataEducation.map((item, index) => {
+            return (
+              <div
+                key={item.id}
+                className="w-[360px] bg-white shadow-lg p-4 rounded-md mx-3 hover:cursor-pointer hover:translate-x-[-10px] hover:translate-y-[-10px] hover:duration-300 hover:ease-in-out hover:transition"
+              >
+                <h2 className="text-gray-500 font-bold">
+                  Name shool :
+                  <span className="text-black font-semibold">
+                    {item.nameSchool}
+                  </span>
+                </h2>
+                <p className="text-gray-500 font-bold">
+                  Major :
+                  <span className="text-black font-semibold">{item.major}</span>
+                </p>
+                <div className="text-gray-500 font-bold">
+                  From :
+                  <span className="text-black font-semibold mx-1">
+                    {item.fromDate}
+                  </span>
+                  -
+                  <span className="text-black font-semibold mx-1">
+                    {item.toDate}
+                  </span>
+                </div>
+                <h3 className="text-gray-500 font-bold">
+                  Degree Classification :
+                  <span className="text-black font-semibold">
+                    {item.degreeClassification}
+                  </span>
+                </h3>
+              </div>
+            );
+          })}
+        </div>
+        <div className="flex items-center justify-center">
+          {Experience.map((item, index) => {
+            return (
+              <div
+                className="bg-white shadow-lg w-[700px] rounded-3xl px-4 py-7 mt-5 ease-out duration-300 hover:translate-y-[-15px] hover:cursor-pointer"
+                key={item.id}
+              >
+                <h2 className="text-gray-500 font-medium">
+                  Company :{" "}
+                  <span className="font-bold text-black">
+                    {item.nameCompany}
+                  </span>
+                </h2>
+                <h3 className="text-gray-500 font-medium">
+                  From :{" "}
+                  <span className="font-bold text-black mx-1">
+                    {item.fromDate}
+                  </span>{" "}
+                  To{" "}
+                  <span className="font-bold text-black mx-1">
+                    {item.toDate}
+                  </span>
+                </h3>
+                <p className="text-gray-500 font-medium">
+                  Position :
+                  <span className="font-bold text-black">
+                    {item.positionCompany}
+                  </span>
+                </p>
+                <ul className="text-justify">
+                  <li className="text-gray-500 font-medium">Decsription : </li>
+                  <li className="text-gray-500 font-medium">
+                    - <span className="font-bold text-black">{item.decs}</span>
+                  </li>
+                  <li className="text-gray-500 font-medium">
+                    - <span className="font-bold text-black">{item.decs1}</span>
+                  </li>
+                  <li className="text-gray-500 font-medium">
+                    - <span className="font-bold text-black">{item.decs2}</span>
+                  </li>
+                  <li className="text-gray-500 font-medium">
+                    - <span className="font-bold text-black">{item.decs3}</span>
+                  </li>
+                  <li className="text-gray-500 font-medium">
+                    - <span className="font-bold text-black">{item.decs4}</span>
+                  </li>
+                  <li className="text-gray-500 font-medium">
+                    - <span className="font-bold text-black">{item.decs5}</span>
+                  </li>
+                  <li className="text-gray-500 font-medium">
+                    - <span className="font-bold text-black">{item.decs6}</span>
+                  </li>
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
-
+      {/* project */}
+      <div className="py-10 px-10">
+        <div className="border-y border-slate-500 border-solid py-5">
+          <h2 className="text-center pt-5 font-bold text-gray-500 text-4xl mb-8">
+            Projects
+          </h2>
+          <h3 className="text-center pb-5 pt-1 font-semibold text-gray-500">
+            Here are a few of my standout projects
+          </h3>
+          <div className="pt-10 grid grid-cols-2 gap-4">
+            {dataProject.map((item, index) => {
+              return (
+                <a key={item.id} href={item.link ? item.link : "#"}>
+                  <div className=" relative hover:scale-90 hover:cursor-pointer hover:delay-200 hover:duration-500 hover:ease-in-out transition-all">
+                    <img
+                      src={item.image}
+                      alt=""
+                      className="w-full h-full block rounded-2xl"
+                    />
+                    <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/[.50] rounded-2xl hover:bg-violet-800/[.20] flex flex-col justify-center items-center">
+                      <h3 className="text-white font-bold text-xl">
+                        {item.nameProject}
+                      </h3>
+                      <p className="text-white text-lg mt-2">{item.decs}</p>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
       {/* get touch menu */}
-
       <div>
         <h2 className="text-center py-5 font-bold text-gray-500 text-4xl mb-8">
           Get In Touch With Me
         </h2>
-        <div className="text-center font-semibold">
+        <div className="text-center font-semibold text-gray-400">
           <p>
             Thank you to spend your time visiting my page! Please feel free to
             send me some messages.
@@ -271,14 +395,14 @@ export default function Home() {
             <AiFillFacebook size={22} className="rounded-sm" color="blue" />
             <a
               href="https://www.facebook.com/meo.ngokham?mibextid=uzlsIk"
-              className="ml-1"
+              className="ml-1 font-bold"
             >
               Facebook
             </a>
           </div>
           <div className="flex items-center ml-3  hover:opacity-70 hover:text-teal-800 hover:cursor-pointer">
             <AiFillTwitterSquare size={22} color="blue" />
-            <a href="https://zalo.me/0329050100" className="ml-1">
+            <a href="https://zalo.me/0329050100" className="ml-1 font-bold">
               Zalo
             </a>
           </div>
@@ -286,7 +410,7 @@ export default function Home() {
             <CgInstagram size={22} color="pink" />
             <a
               href="https://www.instagram.com/phg.thaow_?igsh=NTY1dm9wbXczOXN3"
-              className="ml-1"
+              className="ml-1 font-bold"
             >
               Instagram
             </a>
